@@ -21,6 +21,11 @@ export default {
           commit('SET_ACCESS_TOKEN', null)
           console.error('Error OAuth', err)
         })
+        .finally(() => {
+          commit('loading/SET_LOADING', false, {
+            root: true
+          })
+        })
     }
   }
 }

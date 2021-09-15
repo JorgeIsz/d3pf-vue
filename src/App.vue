@@ -1,20 +1,27 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <LoadLayout v-if="isLoading">
+    <BaseLoading />
+  </LoadLayout>
+
+  <MainLayout v-else />
 </template>
 
 <script setup>
-import store from './store'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
+import BaseLoading from './components/BaseLoading.vue'
+import LoadLayout from './layouts/LoadLayout.vue'
+import MainLayout from './layouts/MainLayout.vue'
+
+const store = useStore()
 const init = () => {
   store.dispatch('oauth/getToken', null, { root: true })
 }
 
+const isLoading = computed(() => store.state.loading.isLoading)
+
 init()
-setTimeout(() => console.log(store.state.accessToken), 1000)
 </script>
 
 <style lang="stylus">
@@ -23,6 +30,6 @@ setTimeout(() => console.log(store.state.accessToken), 1000)
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   text-align center
-  color #2c3e50
-  margin-top 60px
+  color #fff
+  background-color #15202b
 </style>
