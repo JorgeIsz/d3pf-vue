@@ -3,10 +3,7 @@ module.exports = {
   env: {
     node: true
   },
-  extends: [
-    'plugin:vue/vue3-essential',
-    '@vue/standard'
-  ],
+  extends: ['plugin:vue/vue3-essential', '@vue/standard'],
   parserOptions: {
     parser: 'babel-eslint'
   },
@@ -22,6 +19,15 @@ module.exports = {
       ],
       env: {
         jest: true
+      }
+    },
+    {
+      files: '*.vue',
+      globals: {
+        defineProps: 'readable',
+        defineEmits: 'readable',
+        withDefaults: 'readable',
+        defineComponent: 'readable'
       }
     }
   ]

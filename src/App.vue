@@ -15,13 +15,9 @@ import LoadLayout from './layouts/LoadLayout.vue'
 import MainLayout from './layouts/MainLayout.vue'
 
 const store = useStore()
-const init = () => {
-  store.dispatch('oauth/getToken', null, { root: true })
-}
+store.dispatch('oauth/getToken', null, { root: true })
 
 const isLoading = computed(() => store.state.loading.isLoading)
-
-init()
 </script>
 
 <style lang="stylus">
@@ -29,7 +25,8 @@ init()
   font-family Avenir, Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-  text-align center
   color #fff
   background-color #15202b
+  min-height 100vh
+  padding 50px
 </style>
