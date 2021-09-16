@@ -7,7 +7,7 @@
           placeholder="BattleTag"
           class="mt-4"
           v-model="form.battleTag"
-          :rules="[value => (value && value.length > 0) || 'Field is required']"
+          :rules="[value => validarCampo(value) || 'Field is required']"
         />
         <va-select
           class="my-4"
@@ -41,16 +41,24 @@ const computedRegions = computed(() =>
 
 const router = useRouter()
 
+const validarCampo = value => value && value.length > 0
+
 const onSumbit = () => {
-  formElement.validate()
+  formElement.value.validate()
   const { region, battleTag } = toRaw(form)
-  router.push({
-    name: 'Profile',
-    params: {
-      region: region.value,
-      battleTag: battleTag.replace('#', '-')
-    }
-  })
+
+  const regionEsValida = validarCampo(region.value)
+  const battleTagEsValido = validarCampo(battleTag)
+
+  if (regionEsValida && battleTagEsValido) {
+    router.push({
+      name: 'Profile',
+      params: {
+        region: region.value,
+        battleTag: battleTag.replace('#', '-')
+      }
+    })
+  }
 }
 </script>
 
