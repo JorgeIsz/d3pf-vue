@@ -1,5 +1,11 @@
 <template>
   <div class="home">
-    <h1 class="display-1">Home page</h1>
+    <HomeTitle />
+    <HomeForm />
   </div>
 </template>
+
+<script setup>
+import HomeTitle from './HomeTitle.vue'
+import HomeForm from './HomeForm.vue'
+</script>

@@ -3,12 +3,12 @@
     <div class="foot-links">
       <router-link :to="{ name: 'Home' }">Home</router-link>
       <router-link :to="{ name: 'About' }">About</router-link>
-      <router-link
-        to="https://github.com/baumannzone/diablo3-vue-platzi"
+      <a
+        href="https://github.com/baumannzone/diablo3-vue-platzi"
         target="_blank"
       >
         Github
-      </router-link>
+      </a>
     </div>
   </div>
 </template>

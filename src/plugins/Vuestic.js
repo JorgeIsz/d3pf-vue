@@ -2,7 +2,7 @@ import 'vuestic-ui/dist/vuestic-ui.css'
 
 export const vuesticConfig = {
   colors: {
-    primary: '#23e066',
+    primary: '#1068c2',
     secondary: '#002c85',
     success: '#40e583',
     info: '#2c82e0',
