@@ -2,6 +2,8 @@
   <div class="grid-container">
     <div class="grid-item item-left">
       <TopHeroes v-if="hasHeroes" :heroes="topHeroes" />
+      <HeroesList v-if="hasHeroesList" :heroes="heroesList" />
+      <ProgressList :acts="props.profileData.progression" />
     </div>
     <div class="grid-item item-right">
       <h1>Derecha</h1>
@@ -12,6 +14,8 @@
 <script setup>
 import { computed } from '@vue/reactivity'
 import TopHeroes from './TopHeroes/Index.vue'
+import HeroesList from './HeroesList/Index.vue'
+import ProgressList from './ProgressList/Index.vue'
 
 const props = defineProps({
   profileData: {
@@ -22,6 +26,11 @@ const props = defineProps({
 
 const hasHeroes = computed(() => props.profileData.heroes.length > 0)
 const topHeroes = computed(() => props.profileData.heroes.slice(0, 3))
+
+const hasHeroesList = computed(() => props.profileData.heroes.length > 3)
+const heroesList = computed(() =>
+  props.profileData.heroes.slice(3, props.profileData.heroes.length)
+)
 </script>
 
 <style scoped lang="stylus">
