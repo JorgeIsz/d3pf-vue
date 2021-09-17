@@ -1,5 +1,5 @@
 <template>
-  <va-navbar color="darkGray">
+  <va-navbar color="secondary">
     <template #left>
       <va-navbar-item>
         <img src="@/assets/img/diablo-iii.svg" alt="D3" width="30" />

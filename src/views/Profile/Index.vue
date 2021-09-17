@@ -1,6 +1,6 @@
 <template>
   <BaseLoading v-if="isLoading" />
-  <h1>Profile page</h1>
+  <MainBlock v-if="!!profileData" :profile-data="profileData" />
 </template>
 
 <script setup>
@@ -10,6 +10,7 @@ import { getApiAccount } from '../../api/search'
 import { setApiErr } from '../../utils/setError'
 
 import BaseLoading from '../../components/BaseLoading.vue'
+import MainBlock from './MainBlock/Index.vue'
 
 const route = useRoute()
 const router = useRouter()
