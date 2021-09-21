@@ -6,7 +6,7 @@
       <ProgressList :acts="props.profileData.progression" />
     </div>
     <div class="grid-item item-right">
-      <h1>Derecha</h1>
+      <PlayerStats :stats="statsData" />
     </div>
   </div>
 </template>
@@ -16,6 +16,7 @@ import { computed } from '@vue/reactivity'
 import TopHeroes from './TopHeroes/Index.vue'
 import HeroesList from './HeroesList/Index.vue'
 import ProgressList from './ProgressList/Index.vue'
+import PlayerStats from './PlayerStats/Index.vue'
 
 const props = defineProps({
   profileData: {
@@ -31,12 +32,18 @@ const hasHeroesList = computed(() => props.profileData.heroes.length > 3)
 const heroesList = computed(() =>
   props.profileData.heroes.slice(3, props.profileData.heroes.length)
 )
+
+const statsData = computed(() => {
+  const { paragonLevel, kills, timePlayed } = props.profileData
+  return { paragonLevel, kills, timePlayed }
+})
 </script>
 
 <style scoped lang="stylus">
 .grid-container
     display grid
     grid-template-columns 1fr
+    grid-column-gap 40px
 
     .grid-item
       &.item-left
